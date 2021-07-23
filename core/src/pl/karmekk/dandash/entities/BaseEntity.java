@@ -26,16 +26,13 @@ public abstract class BaseEntity implements Drawable {
         batch.draw(texture, rect.x, rect.y);
     }
 
-    /**
-     * Frees all resources used by this object.
-     */
     public void dispose() {
         texture.dispose();
     }
 
     /**
      * Returns a default texture for the entity.
-     * @return
+     * @return The hard-coded default texture.
      */
     private Texture defaultTexture() {
         return new Texture(Gdx.files.internal("sprites/square.png"));
