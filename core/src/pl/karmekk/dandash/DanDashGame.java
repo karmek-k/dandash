@@ -3,7 +3,6 @@ package pl.karmekk.dandash;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.ScreenUtils;
 import pl.karmekk.dandash.entities.Player;
 import pl.karmekk.dandash.interfaces.Drawable;
