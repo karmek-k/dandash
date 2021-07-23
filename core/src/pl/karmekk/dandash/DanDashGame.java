@@ -1,31 +1,43 @@
 package pl.karmekk.dandash;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import pl.karmekk.dandash.entities.Player;
+import pl.karmekk.dandash.interfaces.Drawable;
 
 public class DanDashGame extends ApplicationAdapter {
-    SpriteBatch batch;
-    Texture img;
+    private SpriteBatch batch;
+    private Array<Drawable> drawables;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        img = new Texture("badlogic.jpg");
+
+        drawables = new Array<>();
+        drawables.add(new Player());
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(1, 0, 0, 1);
+        ScreenUtils.clear(0.2f, 0.2f, 0.2f, 1f);
+
         batch.begin();
-        batch.draw(img, 0, 0);
+
+        for (Drawable drawable : drawables) {
+            drawable.draw(batch);
+        }
+
         batch.end();
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        img.dispose();
+
+        for (Drawable drawable : drawables) {
+            drawable.dispose();
+        }
     }
 }
