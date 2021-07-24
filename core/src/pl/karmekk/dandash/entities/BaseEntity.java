@@ -11,7 +11,7 @@ import pl.karmekk.dandash.interfaces.Drawable;
  * and can be drawn.
  */
 public abstract class BaseEntity implements Drawable {
-    private Texture texture;
+    protected Texture texture;
     protected Rectangle rect;
 
     /**

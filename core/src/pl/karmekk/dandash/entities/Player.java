@@ -49,8 +49,10 @@ public class Player extends BaseEntity {
             movement.y *= slowMultiplier;
         }
 
-        // TODO: remove hard-coded values
-        rect.x = MathUtils.clamp(rect.x + movement.x, 0, 800 - 8);
-        rect.y = MathUtils.clamp(rect.y + movement.y, 0, 600 - 8);
+        int maxX = Gdx.graphics.getWidth() - this.texture.getWidth();
+        int maxY = Gdx.graphics.getHeight() - this.texture.getHeight();
+
+        rect.x = MathUtils.clamp(rect.x + movement.x, 0, maxX);
+        rect.y = MathUtils.clamp(rect.y + movement.y, 0, maxY);
     }
 }
