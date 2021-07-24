@@ -18,9 +18,15 @@ public abstract class BaseEntity implements Drawable, Movable {
     /**
      * Builds a new entity that has the given rectangle and a default texture.
      */
-    public BaseEntity(Rectangle rect) {
-        this.rect = rect;
+    public BaseEntity(int x, int y) {
         this.texture = defaultTexture();
+
+        Rectangle rect = new Rectangle();
+        rect.x = x;
+        rect.y = y;
+        rect.width = this.texture.getWidth();
+        rect.height = this.texture.getHeight();
+        this.rect = rect;
     }
 
     @Override
