@@ -9,14 +9,17 @@ import pl.karmekk.dandash.interfaces.Drawable;
 
 public class DanDashGame extends ApplicationAdapter {
     private SpriteBatch batch;
+    private Player player;
     private Array<Drawable> drawables;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
 
+        player = new Player(200f);
+
         drawables = new Array<>();
-        drawables.add(new Player());
+        drawables.add(player);
     }
 
     @Override
@@ -30,6 +33,8 @@ public class DanDashGame extends ApplicationAdapter {
         }
 
         batch.end();
+
+        player.handleMovement();
     }
 
     @Override
