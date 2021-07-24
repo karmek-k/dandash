@@ -9,10 +9,12 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Player extends BaseEntity {
     private final float speed;
+    private final float slowMultiplier;
     private final Vector2 movement;
 
-    public Player(float speed) {
+    public Player(float speed, float slowMultiplier) {
         this.speed = speed;
+        this.slowMultiplier = slowMultiplier;
 
         // only one Vector2D instance for performance
         this.movement = new Vector2();
@@ -39,6 +41,12 @@ public class Player extends BaseEntity {
         movement.nor();
         movement.x *= dt * speed;
         movement.y *= dt * speed;
+
+        // slow movement
+        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
+            movement.x *= slowMultiplier;
+            movement.y *= slowMultiplier;
+        }
 
         rect.x += movement.x;
         rect.y += movement.y;

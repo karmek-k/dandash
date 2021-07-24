@@ -16,7 +16,7 @@ public class DanDashGame extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
 
-        player = new Player(200f);
+        player = new Player(300f, 0.5f);
 
         drawables = new Array<>();
         drawables.add(player);
