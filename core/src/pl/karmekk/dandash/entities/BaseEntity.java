@@ -12,7 +12,7 @@ import pl.karmekk.dandash.interfaces.Drawable;
  */
 public abstract class BaseEntity implements Drawable {
     private Texture texture;
-    private Rectangle rect;
+    protected Rectangle rect;
 
     /**
      * Builds a new entity that has a default rectangle and texture.
@@ -22,10 +22,12 @@ public abstract class BaseEntity implements Drawable {
         texture = defaultTexture();
     }
 
+    @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texture, rect.x, rect.y);
     }
 
+    @Override
     public void dispose() {
         texture.dispose();
     }

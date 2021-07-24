@@ -8,7 +8,7 @@ public class DesktopLauncher {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
 
-    public static void main (String[] arg) {
+    public static void main(String[] arg) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
         config.setTitle("DanDash");
