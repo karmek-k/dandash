@@ -22,10 +22,12 @@ public abstract class BaseEntity implements Drawable {
         texture = defaultTexture();
     }
 
+    @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texture, rect.x, rect.y);
     }
 
+    @Override
     public void dispose() {
         texture.dispose();
     }
