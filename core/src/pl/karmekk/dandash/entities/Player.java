@@ -13,6 +13,8 @@ public class Player extends BaseEntity {
 
     public Player(float speed) {
         this.speed = speed;
+
+        // only one Vector2D instance for performance
         this.movement = new Vector2();
     }
 
