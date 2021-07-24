@@ -5,12 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import pl.karmekk.dandash.interfaces.Drawable;
+import pl.karmekk.dandash.interfaces.Movable;
 
 /**
  * Base class for all entities that have a texture and dimensions
  * and can be drawn.
  */
-public abstract class BaseEntity implements Drawable {
+public abstract class BaseEntity implements Drawable, Movable {
     protected Texture texture;
     protected Rectangle rect;
 
