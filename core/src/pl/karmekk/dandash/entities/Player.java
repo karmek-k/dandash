@@ -2,6 +2,7 @@ package pl.karmekk.dandash.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -48,7 +49,8 @@ public class Player extends BaseEntity {
             movement.y *= slowMultiplier;
         }
 
-        rect.x += movement.x;
-        rect.y += movement.y;
+        // TODO: remove hard-coded values
+        rect.x = MathUtils.clamp(rect.x + movement.x, 0, 800 - 8);
+        rect.y = MathUtils.clamp(rect.y + movement.y, 0, 600 - 8);
     }
 }
