@@ -22,7 +22,7 @@ public class Player extends BaseEntity {
         this.movement = new Vector2();
     }
 
-    public void handleMovement() {
+    public void move() {
         movement.x = 0;
         movement.y = 0;
 

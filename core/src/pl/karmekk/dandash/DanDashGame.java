@@ -34,7 +34,7 @@ public class DanDashGame extends ApplicationAdapter {
 
         batch.end();
 
-        player.handleMovement();
+        player.move();
     }
 
     @Override

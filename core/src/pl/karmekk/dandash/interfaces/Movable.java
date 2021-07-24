@@ -1,5 +1,11 @@
 package pl.karmekk.dandash.interfaces;
 
+/**
+ * An object that moves in some way.
+ */
 public interface Movable {
-    void handleMovement();
+    /**
+     * Moves the object.
+     */
+    void move();
 }
