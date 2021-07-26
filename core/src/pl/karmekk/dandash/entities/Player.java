@@ -39,10 +39,9 @@ public class Player extends BaseEntity {
             movement.y -= 1;
         }
 
-        float dt = Gdx.graphics.getDeltaTime();
         movement.nor();
-        movement.x *= dt * speed;
-        movement.y *= dt * speed;
+        movement.x *= this.dt() * speed;
+        movement.y *= this.dt() * speed;
 
         // slow movement
         if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {

@@ -40,6 +40,14 @@ public abstract class BaseEntity implements Drawable, Movable {
     }
 
     /**
+     * Shortcut for Gdx.graphics.getDeltaTime().
+     * @return Delta time
+     */
+    protected static float dt() {
+        return Gdx.graphics.getDeltaTime();
+    }
+
+    /**
      * Returns a default texture for the entity.
      * @return The hard-coded default texture.
      */
