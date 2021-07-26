@@ -40,8 +40,8 @@ public class Player extends BaseEntity {
         }
 
         movement.nor();
-        movement.x *= this.dt() * speed;
-        movement.y *= this.dt() * speed;
+        movement.x *= dt() * speed;
+        movement.y *= dt() * speed;
 
         // slow movement
         if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
