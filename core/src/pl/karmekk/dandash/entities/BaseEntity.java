@@ -17,6 +17,8 @@ public abstract class BaseEntity implements Drawable, Movable {
 
     /**
      * Builds a new entity that has the given rectangle and a default texture.
+     * @param x X coordinate of the bottom left vertex.
+     * @param y Y coordinate of the bottom left vertex.
      */
     public BaseEntity(int x, int y) {
         this.texture = defaultTexture();
