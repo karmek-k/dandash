@@ -23,6 +23,8 @@ public class Bullet extends BaseEntity {
     }
 
     private float calculateSpeed(float velocityVal, float accelerationVal) {
-        return velocityVal + accelerationVal * TimeUtils.timeSinceMillis(initialTime);
+        float timeSinceCreation = TimeUtils.timeSinceMillis(initialTime) / 1000f;
+
+        return velocityVal + accelerationVal * timeSinceCreation;
     }
 }
