@@ -5,15 +5,20 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class Bullet extends BaseEntity {
     private final Vector2 velocity;
-    private final Vector2 linearAcceleration;
-    private long initialTime;
+    private Vector2 linearAcceleration;
+    private final long initialTime;
 
-    public Bullet(int x, int y, Vector2 velocity, Vector2 linearAcceleration) {
+    public Bullet(int x, int y, Vector2 velocity) {
         super(x, y);
         this.velocity = velocity;
-        this.linearAcceleration = linearAcceleration;
+        this.linearAcceleration = new Vector2();
 
         this.initialTime = TimeUtils.millis();
+    }
+
+    public Bullet(int x, int y, Vector2 velocity, Vector2 linearAcceleration) {
+        this(x, y, velocity);
+        this.linearAcceleration = linearAcceleration;
     }
 
     @Override
