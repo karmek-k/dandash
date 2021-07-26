@@ -40,6 +40,16 @@ public abstract class BaseEntity implements Drawable, Movable {
     }
 
     /**
+     * Returns true if the object is offscreen, false otherwise
+     * @return Whether the object is offscreen.
+     */
+    public boolean offScreen() {
+        int w = Gdx.graphics.getWidth();
+        int h = Gdx.graphics.getHeight();
+        return rect.x > w || rect.x < w - rect.width || rect.y > h || rect.y < h - rect.height;
+    }
+
+    /**
      * Shortcut for Gdx.graphics.getDeltaTime().
      * @return Delta time
      */
