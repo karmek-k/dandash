@@ -13,7 +13,15 @@ public class Player extends BaseEntity {
     private final float slowMultiplier;
     private final Vector2 movement;
 
-    public Player(float speed, float slowMultiplier) {
+    /**
+     * Builds a new player that has the given speed and slow multiplier.
+     * @param x X coordinate of the bottom left vertex.
+     * @param y Y coordinate of the bottom left vertex.
+     * @param speed How fast the player moves.
+     * @param slowMultiplier The number speed is multiplied by when in slow mode.
+     */
+    public Player(int x, int y, float speed, float slowMultiplier) {
+        super(x, y);
         this.speed = speed;
         this.slowMultiplier = slowMultiplier;
 
@@ -21,7 +29,8 @@ public class Player extends BaseEntity {
         this.movement = new Vector2();
     }
 
-    public void handleMovement() {
+    @Override
+    public void move() {
         movement.x = 0;
         movement.y = 0;
 
@@ -38,10 +47,9 @@ public class Player extends BaseEntity {
             movement.y -= 1;
         }
 
-        float dt = Gdx.graphics.getDeltaTime();
         movement.nor();
-        movement.x *= dt * speed;
-        movement.y *= dt * speed;
+        movement.x *= dt() * speed;
+        movement.y *= dt() * speed;
 
         // slow movement
         if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
