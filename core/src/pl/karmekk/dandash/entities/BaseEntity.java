@@ -46,7 +46,14 @@ public abstract class BaseEntity implements Drawable, Movable {
     public boolean offScreen() {
         int w = Gdx.graphics.getWidth();
         int h = Gdx.graphics.getHeight();
-        return rect.x > w || rect.x < w - rect.width || rect.y > h || rect.y < h - rect.height;
+
+        // these are true when the entity is besides the corresponding wall
+        boolean right = rect.x > w;
+        boolean left = rect.x + rect.width < 0;
+        boolean up = rect.y > h;
+        boolean down = rect.y + rect.height < 0;
+
+        return right || left || up || down;
     }
 
     /**
