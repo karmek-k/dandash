@@ -1,7 +1,8 @@
-package pl.karmekk.dandash.entities;
+package pl.karmekk.dandash.entities.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import pl.karmekk.dandash.entities.BaseEntity;
 
 /**
  * A bullet that the player is supposed to dodge.
@@ -9,7 +10,7 @@ import com.badlogic.gdx.utils.TimeUtils;
  * Note that you should remember about destroying the bullet with the dispose() method
  * when it is not used anymore!
  */
-public class Bullet extends BaseEntity {
+public class Bullet extends BaseEntity implements Projectile {
     private final Vector2 velocity;
     private Vector2 linearAcceleration;
     private final long initialTime;

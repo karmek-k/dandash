@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
-import pl.karmekk.dandash.entities.Bullet;
+import pl.karmekk.dandash.entities.projectiles.Bullet;
 import pl.karmekk.dandash.entities.Player;
 import pl.karmekk.dandash.entities.Drawable;
 
