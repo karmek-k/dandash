@@ -30,8 +30,7 @@ public class Bullet extends BaseEntity implements Projectile {
     }
 
     /**
-     *
-     * Creates a bullet with no linear acceleration.
+     * Creates a bullet with given linear acceleration.
      * @param x X coordinate of the bottom left vertex.
      * @param y Y coordinate of the bottom left vertex.
      * @param velocity Initial velocity.
