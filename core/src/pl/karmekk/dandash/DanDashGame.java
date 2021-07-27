@@ -1,6 +1,7 @@
 package pl.karmekk.dandash;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -19,7 +20,9 @@ public class DanDashGame extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
 
-        player = new Player(0, 0, 300f, 0.5f);
+        int x = Gdx.graphics.getWidth() / 2 - 4;
+        int y = Gdx.graphics.getHeight() / 6 - 4;
+        player = new Player(x, y, 300f, 0.5f);
 
         drawables = new Array<>();
         drawables.add(player);
@@ -33,9 +36,23 @@ public class DanDashGame extends ApplicationAdapter {
 
         player.move();
 
-        // TODO: extract this to a separate method
-        if (player.isShooting(100)) {
-            Bullet bullet = new Bullet(player.getX(), player.getY(), new Vector2(0, 500));
+        handleShooting();
+
+        batch.begin();
+
+        for (Drawable drawable : drawables) {
+            drawable.draw(batch);
+        }
+
+        batch.end();
+    }
+
+    /**
+     * Moves, creates and destroys bullets.
+     */
+    private void handleShooting() {
+        if (player.isShooting(100)) { // demo
+            Bullet bullet = new Bullet(player.getX(), player.getY(), new Vector2(0, 500)); // demo
             bullets.add(bullet);
             drawables.add(bullet);
         }
@@ -50,14 +67,6 @@ public class DanDashGame extends ApplicationAdapter {
 
             b.move();
         }
-
-        batch.begin();
-
-        for (Drawable drawable : drawables) {
-            drawable.draw(batch);
-        }
-
-        batch.end();
     }
 
     @Override
