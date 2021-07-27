@@ -1,4 +1,4 @@
-package pl.karmekk.dandash.interfaces;
+package pl.karmekk.dandash.entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;

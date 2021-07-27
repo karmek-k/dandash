@@ -1,4 +1,4 @@
-package pl.karmekk.dandash.interfaces;
+package pl.karmekk.dandash.entities;
 
 /**
  * An object that moves in some way.

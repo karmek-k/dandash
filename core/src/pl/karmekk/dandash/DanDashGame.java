@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import pl.karmekk.dandash.entities.Bullet;
 import pl.karmekk.dandash.entities.Player;
-import pl.karmekk.dandash.interfaces.Drawable;
+import pl.karmekk.dandash.entities.Drawable;
 
 public class DanDashGame extends ApplicationAdapter {
     private SpriteBatch batch;

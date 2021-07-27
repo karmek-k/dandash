@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import pl.karmekk.dandash.interfaces.Drawable;
-import pl.karmekk.dandash.interfaces.Movable;
 
 /**
  * Base class for all entities that have a texture and dimensions
