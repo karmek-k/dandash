@@ -33,13 +33,18 @@ public class Player extends BaseEntity {
         this.movement = new Vector2();
     }
 
+    /**
+     * Returns whether the delay since the last shoot has been satisfied.
+     * @param delay How long the delay between each bullet should be [ms]
+     * @return True if the bullet should be emitted, false otherwise
+     */
     public boolean isShooting(long delay) {
         long timeSinceLastShot = TimeUtils.timeSinceMillis(this.lastShot);
 
-        if (timeSinceLastShot >= delay) {
-            this.lastShot += timeSinceLastShot;
+        if (Gdx.input.isKeyPressed(Input.Keys.Z) && timeSinceLastShot >= delay) {
+            this.lastShot = TimeUtils.millis();
 
-            return Gdx.input.isKeyPressed(Input.Keys.Z);
+            return true;
         }
 
         return false;
