@@ -1,7 +1,8 @@
-package pl.karmekk.dandash.entities;
+package pl.karmekk.dandash.entities.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import pl.karmekk.dandash.entities.BaseEntity;
 
 /**
  * A bullet that the player is supposed to dodge.
@@ -29,8 +30,7 @@ public class Bullet extends BaseEntity {
     }
 
     /**
-     *
-     * Creates a bullet with no linear acceleration.
+     * Creates a bullet with given linear acceleration.
      * @param x X coordinate of the bottom left vertex.
      * @param y Y coordinate of the bottom left vertex.
      * @param velocity Initial velocity.

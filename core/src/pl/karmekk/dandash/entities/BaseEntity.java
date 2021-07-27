@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import pl.karmekk.dandash.interfaces.Drawable;
-import pl.karmekk.dandash.interfaces.Movable;
 
 /**
  * Base class for all entities that have a texture and dimensions
@@ -56,6 +54,22 @@ public abstract class BaseEntity implements Drawable, Movable {
         boolean down = rect.y + rect.height < 0;
 
         return right || left || up || down;
+    }
+
+    /**
+     * Returns entity's X coordinate as an int.
+     * @return X coordinate of the bottom left corner
+     */
+    public int getX() {
+        return (int) rect.x;
+    }
+
+    /**
+     * Returns entity's Y coordinate as an int.
+     * @return Y coordinate of the bottom left corner
+     */
+    public int getY() {
+        return (int) rect.y;
     }
 
     /**

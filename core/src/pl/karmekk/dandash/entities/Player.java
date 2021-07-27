@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.TimeUtils;
+import pl.karmekk.dandash.entities.projectiles.Bullet;
 
 /**
  * An entity representing the player.
@@ -12,6 +14,7 @@ public class Player extends BaseEntity {
     private final float speed;
     private final float slowMultiplier;
     private final Vector2 movement;
+    private long lastShot;
 
     /**
      * Builds a new player that has the given speed and slow multiplier.
@@ -24,9 +27,27 @@ public class Player extends BaseEntity {
         super(x, y);
         this.speed = speed;
         this.slowMultiplier = slowMultiplier;
+        this.lastShot = TimeUtils.millis();
 
         // only one Vector2D instance for performance
         this.movement = new Vector2();
+    }
+
+    /**
+     * Returns whether the delay since the last shoot has been satisfied.
+     * @param delay How long the delay between each bullet should be [ms]
+     * @return True if the bullet should be emitted, false otherwise
+     */
+    public boolean isShooting(long delay) {
+        long timeSinceLastShot = TimeUtils.timeSinceMillis(this.lastShot);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.Z) && timeSinceLastShot >= delay) {
+            this.lastShot = TimeUtils.millis();
+
+            return true;
+        }
+
+        return false;
     }
 
     @Override
