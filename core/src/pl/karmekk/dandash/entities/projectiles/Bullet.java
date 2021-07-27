@@ -10,7 +10,7 @@ import pl.karmekk.dandash.entities.BaseEntity;
  * Note that you should remember about destroying the bullet with the dispose() method
  * when it is not used anymore!
  */
-public class Bullet extends BaseEntity implements Projectile {
+public class Bullet extends BaseEntity {
     private final Vector2 velocity;
     private Vector2 linearAcceleration;
     private final long initialTime;
