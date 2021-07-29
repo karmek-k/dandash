@@ -28,7 +28,7 @@ public class Player extends BaseEntity {
         super(x, y);
         this.speed = speed;
         this.slowMultiplier = slowMultiplier;
-        this.emitter = new PlayerBulletEmitter(x, y + 10, shootDelay);
+        this.emitter = new PlayerBulletEmitter(x, y + 10, shootDelay, this);
 
         // only one Vector2D instance for performance
         this.movement = new Vector2();
@@ -71,5 +71,8 @@ public class Player extends BaseEntity {
 
         rect.x = MathUtils.clamp(rect.x + movement.x, 0, maxX);
         rect.y = MathUtils.clamp(rect.y + movement.y, 0, maxY);
+
+        this.getBulletEmitter().setX((int) rect.x);
+        this.getBulletEmitter().setY((int) rect.y);
     }
 }
