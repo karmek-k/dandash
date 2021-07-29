@@ -6,16 +6,16 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import pl.karmekk.dandash.entities.projectiles.BulletEmitter;
+import pl.karmekk.dandash.entities.projectiles.PlayerBulletEmitter;
 
 /**
  * An entity representing the player.
  */
-public class Player extends BaseEntity implements BulletEmitter {
+public class Player extends BaseEntity {
     private final float speed;
     private final float slowMultiplier;
     private final Vector2 movement;
-    private long lastShot;
-    private long shootDelay;
+    private BulletEmitter emitter;
 
     /**
      * Builds a new player that has the given speed and slow multiplier.
@@ -24,32 +24,18 @@ public class Player extends BaseEntity implements BulletEmitter {
      * @param speed How fast the player moves.
      * @param slowMultiplier The number speed is multiplied by when in slow mode.
      */
-    public Player(int x, int y, float speed, float slowMultiplier) {
+    public Player(int x, int y, float speed, float slowMultiplier, long shootDelay) {
         super(x, y);
         this.speed = speed;
         this.slowMultiplier = slowMultiplier;
-        this.lastShot = TimeUtils.millis();
-        this.shootDelay = 0;
+        this.emitter = new PlayerBulletEmitter(x, y + 10, shootDelay);
 
         // only one Vector2D instance for performance
         this.movement = new Vector2();
     }
 
-    /**
-     * Returns whether the delay since the last shoot has been satisfied.
-     * @return True if the bullet should be emitted, false otherwise
-     */
-    @Override
-    public boolean isShooting() {
-        long timeSinceLastShot = TimeUtils.timeSinceMillis(this.lastShot);
-
-        if (Gdx.input.isKeyPressed(Input.Keys.Z) && timeSinceLastShot >= this.shootDelay) {
-            this.lastShot = TimeUtils.millis();
-
-            return true;
-        }
-
-        return false;
+    public BulletEmitter getBulletEmitter() {
+        return this.emitter;
     }
 
     @Override
@@ -85,10 +71,5 @@ public class Player extends BaseEntity implements BulletEmitter {
 
         rect.x = MathUtils.clamp(rect.x + movement.x, 0, maxX);
         rect.y = MathUtils.clamp(rect.y + movement.y, 0, maxY);
-    }
-
-    @Override
-    public void setShootDelay(long shootDelay) {
-        this.shootDelay = shootDelay;
     }
 }
