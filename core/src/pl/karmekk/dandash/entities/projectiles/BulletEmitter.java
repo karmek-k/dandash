@@ -1,12 +1,14 @@
 package pl.karmekk.dandash.entities.projectiles;
 
+import com.badlogic.gdx.utils.TimeUtils;
 import pl.karmekk.dandash.entities.BaseEntity;
 
 /**
  * An object that can shoot bullets.
  */
 public abstract class BulletEmitter extends BaseEntity {
-    private long shootDelay;
+    protected long shootDelay;
+    protected long lastShot;
 
     /**
      * Builds a new entity that has the given rectangle and a default texture.
@@ -17,6 +19,7 @@ public abstract class BulletEmitter extends BaseEntity {
     public BulletEmitter(int x, int y, long shootDelay) {
         super(x, y);
         this.shootDelay = shootDelay;
+        this.lastShot = TimeUtils.millis();
     }
 
     public abstract boolean isShooting();
