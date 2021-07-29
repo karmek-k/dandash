@@ -23,6 +23,7 @@ public class DanDashGame extends ApplicationAdapter {
         int x = Gdx.graphics.getWidth() / 2 - 4;
         int y = Gdx.graphics.getHeight() / 6 - 4;
         player = new Player(x, y, 300f, 0.5f);
+        player.setShootDelay(100L);
 
         drawables = new Array<>();
         drawables.add(player);
@@ -51,7 +52,7 @@ public class DanDashGame extends ApplicationAdapter {
      * Moves, creates and destroys bullets.
      */
     private void handleShooting() {
-        if (player.isShooting(100)) { // demo
+        if (player.isShooting()) { // demo
             Bullet bullet = new Bullet(player.getX(), player.getY(), new Vector2(0, 500)); // demo
             bullets.add(bullet);
             drawables.add(bullet);
