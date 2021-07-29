@@ -37,6 +37,7 @@ public class DanDashGame extends ApplicationAdapter {
 
         player.move();
 
+        destroyOffScreenBullets();
         handleShooting();
 
         batch.begin();
@@ -49,7 +50,7 @@ public class DanDashGame extends ApplicationAdapter {
     }
 
     /**
-     * Moves, creates and destroys bullets.
+     * Moves and creates bullets.
      */
     private void handleShooting() {
         if (player.isShooting()) { // demo
@@ -57,6 +58,12 @@ public class DanDashGame extends ApplicationAdapter {
             bullets.add(bullet);
             drawables.add(bullet);
         }
+    }
+
+    /**
+     * Destroys bullets that are outside screen boundaries.
+     */
+    private void destroyOffScreenBullets() {
         for (Bullet b : bullets) {
             if (b.offScreen()) {
                 drawables.removeValue(b, true);
