@@ -24,6 +24,8 @@ public abstract class BulletEmitter extends BaseEntity {
 
     public abstract boolean isShooting();
 
+    public abstract Bullet buildProjectile();
+
     void setShootDelay(long shootDelay) {
         this.shootDelay = shootDelay;
     }
