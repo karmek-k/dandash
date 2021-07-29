@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import pl.karmekk.dandash.entities.Player;
 import pl.karmekk.dandash.entities.Drawable;
 import pl.karmekk.dandash.entities.projectiles.Bullet;
+import pl.karmekk.dandash.entities.projectiles.BulletEmitter;
 import pl.karmekk.dandash.entities.projectiles.StaticBulletEmitter;
 
 public class DanDashGame extends ApplicationAdapter {
@@ -16,6 +17,7 @@ public class DanDashGame extends ApplicationAdapter {
     private Player player;
     private Array<Drawable> drawables;
     private Array<Bullet> bullets;
+    private Array<BulletEmitter> bulletEmitters;
     private StaticBulletEmitter staticEmitter;
 
     @Override
@@ -32,8 +34,12 @@ public class DanDashGame extends ApplicationAdapter {
         bullets = new Array<>();
 
         // demo
+        bulletEmitters = new Array<>();
+        bulletEmitters.add(player.getBulletEmitter());
+
         staticEmitter = new StaticBulletEmitter(400, 300, 500L);
         drawables.add(staticEmitter);
+        bulletEmitters.add(staticEmitter);
     }
 
     @Override
@@ -55,13 +61,15 @@ public class DanDashGame extends ApplicationAdapter {
     }
 
     /**
-     * Moves and creates bullets.
+     * Moves and creates bullets from emitters.
      */
     private void handleShooting() {
-        if (player.getBulletEmitter().isShooting()) {
-            Bullet bullet = new Bullet(player.getX(), player.getY(), new Vector2(0, 500));
-            bullets.add(bullet);
-            drawables.add(bullet);
+        for (BulletEmitter e : bulletEmitters) {
+            if (e.isShooting()) {
+                Bullet bullet = e.buildProjectile();
+                bullets.add(bullet);
+                drawables.add(bullet);
+            }
         }
     }
 
