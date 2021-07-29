@@ -1,5 +1,6 @@
 package pl.karmekk.dandash.entities.projectiles;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class StaticBulletEmitter extends BulletEmitter {
@@ -24,6 +25,11 @@ public class StaticBulletEmitter extends BulletEmitter {
         }
 
         return false;
+    }
+
+    @Override
+    public Bullet buildProjectile() {
+        return new Bullet(this.getX(), this.getY(), new Vector2(-100, -100));
     }
 
     @Override
