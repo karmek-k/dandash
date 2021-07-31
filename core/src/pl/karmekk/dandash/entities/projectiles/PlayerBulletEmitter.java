@@ -44,6 +44,6 @@ public class PlayerBulletEmitter extends BulletEmitter {
 
     @Override
     public void move() {
-        // moves along the player
+        // doesn't need to move
     }
 }
