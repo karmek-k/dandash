@@ -2,6 +2,7 @@ package pl.karmekk.dandash.entities.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import pl.karmekk.dandash.entities.Player;
 
 public class StaticBulletEmitter extends BulletEmitter {
     /**
@@ -28,8 +29,11 @@ public class StaticBulletEmitter extends BulletEmitter {
     }
 
     @Override
-    public Bullet buildProjectile() {
-        return new Bullet(this.getX(), this.getY(), new Vector2(-100, -100));
+    public Bullet buildProjectile(Player player) {
+        int x = player.getX() - this.getX();
+        int y = player.getY() - this.getY();
+
+        return new Bullet(this.getX(), this.getY(), new Vector2(x, y));
     }
 
     @Override

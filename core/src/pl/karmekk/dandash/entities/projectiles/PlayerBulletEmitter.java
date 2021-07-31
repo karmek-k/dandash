@@ -38,8 +38,8 @@ public class PlayerBulletEmitter extends BulletEmitter {
     }
 
     @Override
-    public Bullet buildProjectile() {
-        return new Bullet(this.getX(), this.getY(), new Vector2(0, 500));
+    public Bullet buildProjectile(Player player) {
+        return new Bullet(player.getX(), player.getY(), new Vector2(0, 500));
     }
 
     @Override

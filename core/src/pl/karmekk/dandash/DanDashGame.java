@@ -66,7 +66,7 @@ public class DanDashGame extends ApplicationAdapter {
     private void handleShooting() {
         for (BulletEmitter e : bulletEmitters) {
             if (e.isShooting()) {
-                Bullet bullet = e.buildProjectile();
+                Bullet bullet = e.buildProjectile(player);
                 bullets.add(bullet);
                 drawables.add(bullet);
             }

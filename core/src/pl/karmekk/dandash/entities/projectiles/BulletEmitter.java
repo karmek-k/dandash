@@ -2,6 +2,7 @@ package pl.karmekk.dandash.entities.projectiles;
 
 import com.badlogic.gdx.utils.TimeUtils;
 import pl.karmekk.dandash.entities.BaseEntity;
+import pl.karmekk.dandash.entities.Player;
 
 /**
  * An object that can shoot bullets.
@@ -29,9 +30,10 @@ public abstract class BulletEmitter extends BaseEntity {
 
     /**
      * Returns a bullet depending on the object
+     * @param player The player the emitter is shooting at
      * @return Bullet object
      */
-    public abstract Bullet buildProjectile();
+    public abstract Bullet buildProjectile(Player player);
 
     void setShootDelay(long shootDelay) {
         this.shootDelay = shootDelay;
