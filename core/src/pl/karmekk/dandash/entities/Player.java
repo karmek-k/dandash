@@ -71,8 +71,5 @@ public class Player extends BaseEntity {
 
         rect.x = MathUtils.clamp(rect.x + movement.x, 0, maxX);
         rect.y = MathUtils.clamp(rect.y + movement.y, 0, maxY);
-
-        this.getBulletEmitter().setX((int) rect.x);
-        this.getBulletEmitter().setY((int) rect.y);
     }
 }
