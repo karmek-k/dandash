@@ -73,6 +73,20 @@ public abstract class BaseEntity implements Drawable, Movable {
     }
 
     /**
+     * Sets entity's X coordinate.
+     */
+    public void setX(int x) {
+        this.rect.x = x;
+    }
+
+    /**
+     * Sets entity's Y coordinate.
+     */
+    public void setY(int y) {
+        this.rect.y = y;
+    }
+
+    /**
      * Shortcut for Gdx.graphics.getDeltaTime().
      * @return Delta time
      */

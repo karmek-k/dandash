@@ -9,12 +9,16 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import pl.karmekk.dandash.entities.Player;
 import pl.karmekk.dandash.entities.Drawable;
 import pl.karmekk.dandash.entities.projectiles.Bullet;
+import pl.karmekk.dandash.entities.projectiles.BulletEmitter;
+import pl.karmekk.dandash.entities.projectiles.StaticBulletEmitter;
 
 public class DanDashGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private Player player;
     private Array<Drawable> drawables;
     private Array<Bullet> bullets;
+    private Array<BulletEmitter> bulletEmitters;
+    private StaticBulletEmitter staticEmitter;
 
     @Override
     public void create() {
@@ -22,12 +26,20 @@ public class DanDashGame extends ApplicationAdapter {
 
         int x = Gdx.graphics.getWidth() / 2 - 4;
         int y = Gdx.graphics.getHeight() / 6 - 4;
-        player = new Player(x, y, 300f, 0.5f);
+        player = new Player(x, y, 300f, 0.5f, 100L);
 
         drawables = new Array<>();
         drawables.add(player);
 
         bullets = new Array<>();
+
+        // demo
+        bulletEmitters = new Array<>();
+        bulletEmitters.add(player.getBulletEmitter());
+
+        staticEmitter = new StaticBulletEmitter(400, 300, 500L);
+        drawables.add(staticEmitter);
+        bulletEmitters.add(staticEmitter);
     }
 
     @Override
@@ -36,6 +48,7 @@ public class DanDashGame extends ApplicationAdapter {
 
         player.move();
 
+        destroyOffScreenBullets();
         handleShooting();
 
         batch.begin();
@@ -48,14 +61,22 @@ public class DanDashGame extends ApplicationAdapter {
     }
 
     /**
-     * Moves, creates and destroys bullets.
+     * Moves and creates bullets from emitters.
      */
     private void handleShooting() {
-        if (player.isShooting(100)) { // demo
-            Bullet bullet = new Bullet(player.getX(), player.getY(), new Vector2(0, 500)); // demo
-            bullets.add(bullet);
-            drawables.add(bullet);
+        for (BulletEmitter e : bulletEmitters) {
+            if (e.isShooting()) {
+                Bullet bullet = e.buildProjectile(player);
+                bullets.add(bullet);
+                drawables.add(bullet);
+            }
         }
+    }
+
+    /**
+     * Destroys bullets that are outside screen boundaries.
+     */
+    private void destroyOffScreenBullets() {
         for (Bullet b : bullets) {
             if (b.offScreen()) {
                 drawables.removeValue(b, true);
