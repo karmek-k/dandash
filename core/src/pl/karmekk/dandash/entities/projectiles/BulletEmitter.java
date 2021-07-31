@@ -22,8 +22,15 @@ public abstract class BulletEmitter extends BaseEntity {
         this.lastShot = TimeUtils.millis();
     }
 
+    /**
+     * @return True if the shooting event should be handled.
+     */
     public abstract boolean isShooting();
 
+    /**
+     * Returns a bullet depending on the object
+     * @return Bullet object
+     */
     public abstract Bullet buildProjectile();
 
     void setShootDelay(long shootDelay) {
